@@ -9,11 +9,28 @@ import { Provider } from 'react-redux';
 
 import store from './Redux/store/store';
 
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import ErrorPage from './Pages/00-Error/ErrorPage';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+    errorElement: <ErrorPage/>,
+    // children: [
+    //   {
+    //     path: "contacts/:contactId",
+    //     element: <Contact />,
+    //   },
+    // ],
+  },
+]);
+
 ReactDOM.render(
   <React.StrictMode>
-    
     <Provider store={store}>
-      <App />
+      <RouterProvider router={router}/>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
